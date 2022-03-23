@@ -2,6 +2,11 @@
 #define SIZE 6
 using namespace std;
 
+//
+//  dequeue                             enqueue
+//  front - [  ]  - [  ]  -  [  ]      - rear
+//
+
 struct cirQueue
 {
     int arr[SIZE];
