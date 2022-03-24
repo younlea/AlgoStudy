@@ -1,6 +1,7 @@
 # Refectoring    
-
-## traning kata site    
+  book : refectoring 2nd edition - Martin Fowler    
+  
+## Traning kata site    
 https://kata-log.rocks/refactoring     
 https://github.com/Pragmatists    
 
