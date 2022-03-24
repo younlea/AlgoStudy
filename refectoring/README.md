@@ -22,5 +22,6 @@ https://github.com/Pragmatists
 7. Keep all entities small      
 8. No classes with more than two instance variables      
 9. No getters/setters/properties     
+
 • “Rather than construction,      
     Software is more like Gardening - it is more organic then concrete”      
