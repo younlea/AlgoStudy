@@ -56,7 +56,16 @@ public:
         return myQueue[(front++)%Q_SIZE];        
     }
     
-
+void myEnQueue(int x, int y, int cnt, vector<vector<int>>& grid)
+{
+    struct Queue temp;
+    temp.x = x;
+    temp.y = y;
+    temp.count = cnt;
+    grid[temp.x][temp.y] = 1;
+    enQueue(temp);
+}
+    
     int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
         int xSize = grid.size();
         int ySize = grid[grid.size()-1].size();
@@ -94,88 +103,29 @@ public:
             
             //check 8 direction
             if(tmp.x -1 >=0 && tmp.y-1 >=0 && grid[tmp.x-1][tmp.y-1]== 0)
-            {
-                struct Queue temp;
-                temp.x = tmp.x-1;
-                temp.y = tmp.y-1;
-                temp.count = cnt;
-                grid[temp.x][temp.y] = 1;
-                enQueue(temp);
-            }
+                myEnQueue(tmp.x-1, tmp.y-1, tmp.count+1, grid);
             
             if(tmp.y-1 >=0 && grid[tmp.x][tmp.y-1]== 0)
-            {
-                struct Queue temp;
-                temp.x = tmp.x;
-                temp.y = tmp.y-1;
-                temp.count = cnt;
-                grid[temp.x][temp.y] = 1;
-                enQueue(temp);
-            }
+                myEnQueue(tmp.x, tmp.y-1, tmp.count+1, grid);
             
-             if(tmp.x+1 < xSize && tmp.y-1 >=0 && grid[tmp.x + 1][tmp.y - 1]== 0)
-            {
-                 struct Queue temp;
-                temp.x = tmp.x + 1;
-                temp.y = tmp.y - 1;
-                temp.count = cnt;
-                grid[temp.x][temp.y] = 1;
-                enQueue(temp);
-            }
+            if(tmp.x+1 < xSize && tmp.y-1 >=0 && grid[tmp.x + 1][tmp.y - 1]== 0)
+                myEnQueue(tmp.x+1, tmp.y-1, tmp.count+1, grid);
             
             if(tmp.x -1 >=0 && grid[tmp.x-1][tmp.y]== 0)
-            {
-                struct Queue temp;
-                temp.x = tmp.x-1;
-                temp.y = tmp.y;
-                temp.count = cnt;
-                grid[temp.x][temp.y] = 1;
-                enQueue(temp);
-            }
+                myEnQueue(tmp.x-1, tmp.y, tmp.count+1, grid);
             
             if(tmp.x +1 < xSize && grid[tmp.x+1][tmp.y]== 0)
-            {
-                struct Queue temp;
-                temp.x = tmp.x+1;
-                temp.y = tmp.y;
-                temp.count = cnt;
-                grid[temp.x][temp.y] = 1;
-                enQueue(temp);
-            }
-            
+                myEnQueue(tmp.x+1, tmp.y, tmp.count+1, grid);
             
             if(tmp.x -1 >= 0 && tmp.y+1 < ySize && grid[tmp.x-1][tmp.y+1]== 0)
-            {
-                struct Queue temp;
-                temp.x = tmp.x-1;
-                temp.y = tmp.y+1;
-                temp.count = cnt;
-                grid[temp.x][temp.y] = 1;
-                enQueue(temp);
-            }
-            
+                myEnQueue(tmp.x-1, tmp.y+1, tmp.count+1, grid);
             
             if(tmp.y+1 < ySize && grid[tmp.x][tmp.y+1]== 0)
-            {
-                struct Queue temp;
-                temp.x = tmp.x;
-                temp.y = tmp.y+1;
-                temp.count = cnt;
-                grid[temp.x][temp.y] = 1;
-                enQueue(temp);
-            }
+                myEnQueue(tmp.x, tmp.y+1, tmp.count+1, grid);
             
             if(tmp.x +1 < xSize && tmp.y+1 < ySize && grid[tmp.x+1][tmp.y+1]== 0)
-            {
-                struct Queue temp;
-                temp.x = tmp.x+1;
-                temp.y = tmp.y+1;
-                temp.count = cnt;
-                grid[temp.x][temp.y] = 1;
-                enQueue(temp);   
-            }
-            // cout << "1 tern" << endl;
-            //if arrive xSize-1, ySize-1.. return last count value. 
+                myEnQueue(tmp.x+1, tmp.y+1, tmp.count+1, grid);
+ 
         }
         return -1;
     }
