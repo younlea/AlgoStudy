@@ -1,3 +1,8 @@
+//recommend problem
+// EASY : https://leetcode.com/problems/minimum-absolute-difference-in-bst/  (530. Minimum Absolute Difference in BST)
+// EASY : https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/  (2006. Count Number of Pairs With Absolute Difference K)
+// HARD : https://leetcode.com/problems/kth-smallest-product-of-two-sorted-arrays/ (2040. Kth Smallest Product of Two Sorted Arrays)
+
 class Solution {
 public:
     int findPairs(vector<int>& nums, int k) {
