@@ -16,15 +16,10 @@ public:
     }
     
     bool isQueuIsFull(void) {
-        // cout << "isQueueIsFull" <<endl;
         return ((tail+1)%Q_SIZE) == front;
     }
     
     int enQueue(Queue input) {
-        // cout << "enQueue" <<endl;
-        // cout << "input.x, input,y "<< "(" <<input.x << ","<<input.y <<")" ;
-        // cout << " count   " << input.count <<endl;
-        // cout << "" << endl;
         
         if(isQueuIsFull())
         {
@@ -56,22 +51,23 @@ public:
         return myQueue[(front++)%Q_SIZE];        
     }
     
-void myEnQueue(int x, int y, int cnt, vector<vector<int>>& grid)
-{
-    struct Queue temp;
-    temp.x = x;
-    temp.y = y;
-    temp.count = cnt;
-    grid[temp.x][temp.y] = 1;
-    enQueue(temp);
-}
-    
+    void myEnQueue(int x, int y, int cnt, vector<vector<int>>& grid)
+    {
+        struct Queue temp;
+        temp.x = x;
+        temp.y = y;
+        temp.count = cnt;
+        grid[temp.x][temp.y] = 1;
+        enQueue(temp);
+    }
+        
     int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
+    
+        int dx[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
+        int dy[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
+        
         int xSize = grid.size();
         int ySize = grid[grid.size()-1].size();
-        
-        // cout << "xsize " << xSize << endl;
-        // cout << "ysize " << ySize <<endl;
         
         initQueue();
         //start 0,0
@@ -79,7 +75,6 @@ void myEnQueue(int x, int y, int cnt, vector<vector<int>>& grid)
             return -1;
         
         //enqueue start point
-        
         struct Queue tmp;
         tmp.x = 0;
         tmp.y = 0;
@@ -96,36 +91,18 @@ void myEnQueue(int x, int y, int cnt, vector<vector<int>>& grid)
                 flag = 0;
                 return -1;
             }
-            int cnt = tmp.count + 1;
             
             if(tmp.x == xSize -1 && tmp.y == ySize -1)
                 return tmp.count; 
             
             //check 8 direction
-            if(tmp.x -1 >=0 && tmp.y-1 >=0 && grid[tmp.x-1][tmp.y-1]== 0)
-                myEnQueue(tmp.x-1, tmp.y-1, tmp.count+1, grid);
-            
-            if(tmp.y-1 >=0 && grid[tmp.x][tmp.y-1]== 0)
-                myEnQueue(tmp.x, tmp.y-1, tmp.count+1, grid);
-            
-            if(tmp.x+1 < xSize && tmp.y-1 >=0 && grid[tmp.x + 1][tmp.y - 1]== 0)
-                myEnQueue(tmp.x+1, tmp.y-1, tmp.count+1, grid);
-            
-            if(tmp.x -1 >=0 && grid[tmp.x-1][tmp.y]== 0)
-                myEnQueue(tmp.x-1, tmp.y, tmp.count+1, grid);
-            
-            if(tmp.x +1 < xSize && grid[tmp.x+1][tmp.y]== 0)
-                myEnQueue(tmp.x+1, tmp.y, tmp.count+1, grid);
-            
-            if(tmp.x -1 >= 0 && tmp.y+1 < ySize && grid[tmp.x-1][tmp.y+1]== 0)
-                myEnQueue(tmp.x-1, tmp.y+1, tmp.count+1, grid);
-            
-            if(tmp.y+1 < ySize && grid[tmp.x][tmp.y+1]== 0)
-                myEnQueue(tmp.x, tmp.y+1, tmp.count+1, grid);
-            
-            if(tmp.x +1 < xSize && tmp.y+1 < ySize && grid[tmp.x+1][tmp.y+1]== 0)
-                myEnQueue(tmp.x+1, tmp.y+1, tmp.count+1, grid);
- 
+            for(int i =0; i < 8; i++)
+            {
+                int x = tmp.x + dx[i];
+                int y = tmp.y + dy[i];
+                if(x >=0 && x < xSize && y>=0 && y <ySize && grid[x][y] == 0)
+                    myEnQueue(x, y, tmp.count+1, grid);
+            }
         }
         return -1;
     }
