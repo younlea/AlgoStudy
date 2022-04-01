@@ -51,3 +51,38 @@ public:
         return ret;
     }
 };
+
+// BEST Solution
+// class Solution {
+// public:
+//     int findPairs(vector<int>& nums, int k) {
+        
+//         if(nums.empty() || k<0)
+//             return 0;
+        
+//         sort(nums.begin(), nums.end());
+//         int count = 0;
+//         int j = 0;
+        
+//         for(int i=1; i<nums.size(); )
+//         {
+//             if(j==i){
+//                 i++;
+//                 continue;
+//             }
+            
+//             if(abs(nums[i] - nums[j]) == k ){
+//                 count++;
+//                 i++;
+//                 while(i<nums.size() && nums[i-1] == nums[i])
+//                     i++;
+                
+//                 j++;
+//             } else if(abs(nums[i] - nums[j]) > k ){
+//                 j++;
+//             } else {
+//                 i++;
+//             }
+//         }
+//     }
+// }
