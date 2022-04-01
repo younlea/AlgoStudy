@@ -7,12 +7,24 @@ public:
         
         if(k == 0)
         {
-            // cout << "same value " << endl;
             int cnt = 0;
             int back = nums[0];
             for(int i =1; i < nums.size(); i++)
             {
-                
+                if(back == nums[i])
+                {
+                    cnt++;
+                    while( i <= nums.size()-1)
+                    {
+                        if(back!=nums[i])
+                        {
+                            back = nums[i];        
+                            break;
+                        }
+                        i++;                            
+                    }
+                }else
+                    back = nums[i];
             }
             return cnt;
         
