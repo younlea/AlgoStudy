@@ -1,3 +1,3 @@
 # CleanCode    
-  book : refectoring 2nd edition - Martin Fowler    
+  book : CleanCode - 로버스 C. 마틴    
   
