@@ -1,11 +1,3 @@
 # leecode    
 
-## solving problem      
-864.Shortest Path to Get All Keys    
-    
-
-## solved problem    
-1.Two Sum    
-57.Insert Interval     
-114. flatten-binary-tree-to-linked-list.cpp    
-1091.Shortest Path in Binary Matrix     
+![image](https://user-images.githubusercontent.com/1435846/161634915-60d7065a-0c55-4298-b082-e90023178372.png)
