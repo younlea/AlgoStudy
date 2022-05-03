@@ -1,5 +1,5 @@
-# Refectoring    
-  book : refectoring 2nd edition - Martin Fowler    
+# Refactoring    
+  book : refactoring 2nd edition - Martin Fowler    
   [C++][https://www.cppkorea.org/CppCoreGuidelines/]  
   
 ## Traning kata site    
