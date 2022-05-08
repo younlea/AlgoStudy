@@ -1,9 +1,11 @@
-# Refectoring    
-  book : refectoring 2nd edition - Martin Fowler    
+# Refactoring    
+  book : refactoring 2nd edition - Martin Fowler    
+  [C++][https://www.cppkorea.org/CppCoreGuidelines/]  
   
 ## Traning kata site    
 https://kata-log.rocks/refactoring     
-https://github.com/Pragmatists    
+https://github.com/Pragmatists       
+    
 
 ## More inforemation
 • Martin Fowler, Refactoring Improving the Design of Existing Code 2nd Ed., 2020    
