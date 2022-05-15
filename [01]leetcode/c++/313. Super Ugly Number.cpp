@@ -23,8 +23,7 @@ public:
 
     struct compare {
         bool operator()(const myPrimes& p1, const myPrimes& p2) {
-            return p1.primesCurrentValue > p2.
-                ;
+            return p1.primesCurrentValue > p2.primesCurrentValue;
         }
     };
 
