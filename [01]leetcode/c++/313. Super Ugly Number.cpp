@@ -42,16 +42,16 @@ public:
             tmp.primesCurrentValue = primes[i];
             tmp.count = 1;
             usePrimes.push_back(tmp);
-            
             mq.push(usePrimes[i]);
         }
 
-        int backup;
+        int backup=0;
         for(int cnt = 0; cnt < n; )
         {
             // top
             myPrimes tmp = mq.top();
             ret = tmp.primesCurrentValue;
+            cout << "---" << backup << " "<< ret << endl;
             if(backup != ret)
             {
                 cnt++;
@@ -62,6 +62,7 @@ public:
             mq.pop();
             //calc
             tmp.primesCurrentValue = tmp.primesCurrentValue * tmp.primesOriginalValue;
+            cout << "+++" << tmp.primesCurrentValue << " "<< tmp.primesOriginalValue << endl;
             tmp.count++;
             // push
             mq.push(tmp);
