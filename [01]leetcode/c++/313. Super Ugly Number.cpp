@@ -46,27 +46,42 @@ public:
         }
 
         int backup=0;
-        for(int cnt = 0; cnt < n; )
+
+        if(n == 1)
+            return 1;
+        
+        for(int cnt = 1; cnt < n; )
         {
             // top
             myPrimes tmp = mq.top();
             ret = tmp.primesCurrentValue;
-            cout << "---" << backup << " "<< ret << endl;
+            // cout << "---" << backup << " "<< ret << endl;
             if(backup != ret)
             {
+  //              cout << cnt <<'.' <<tmp.primesCurrentValue << '.'<< tmp.primesOriginalValue << endl;
                 cnt++;
-                cout << tmp.primesCurrentValue << endl;
+
             }
 
             // pop
             mq.pop();
-            //calc
-            tmp.primesCurrentValue = tmp.primesCurrentValue * tmp.primesOriginalValue;
-            cout << "+++" << tmp.primesCurrentValue << " "<< tmp.primesOriginalValue << endl;
-            tmp.count++;
-            // push
-            mq.push(tmp);
-            
+            long long number = (long long)tmp.primesCurrentValue;
+            long long value = 0;
+            for(int i = 0; i < primes.size(); i++)
+            {
+                //calc
+                value = number * primes[i];  // primes 들어온 수들끼리 곱해야 한다. 
+                if(value < 2147483647)  // int 최대값을 넘어가는건 없애야 한다. 
+                {
+                  tmp.primesCurrentValue = (int)value; //곱하기 모든 수.. ㅋㅋㅋ
+//                cout << "+++" << tmp.primesCurrentValue << " "<< tmp.primesOriginalValue<<" "<<number << " " << primes[i] <<endl;
+                  tmp.count++;
+                  // push  
+                  //TODO 이전에 넣었던 수들은 넣지 않는다. hash를 써야 하나?
+                  mq.push(tmp);
+                }
+            }
+
             backup = ret;
         }
         
