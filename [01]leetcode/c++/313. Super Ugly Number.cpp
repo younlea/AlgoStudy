@@ -28,6 +28,7 @@ public:
     };
 
     priority_queue<myPrimes, vector<myPrimes>, compare> mq;
+    unordered_map<int, int> myhash;
     
     int nthSuperUglyNumber(int n, vector<int>& primes) {
 
@@ -70,15 +71,20 @@ public:
             for(int i = 0; i < primes.size(); i++)
             {
                 //calc
-                value = number * primes[i];  // primes 들어온 수들끼리 곱해야 한다. 
-                if(value < 2147483647)  // int 최대값을 넘어가는건 없애야 한다. 
+                value = number * primes[i];
+                if(value < 2147483647)
                 {
                   tmp.primesCurrentValue = (int)value; //곱하기 모든 수.. ㅋㅋㅋ
 //                cout << "+++" << tmp.primesCurrentValue << " "<< tmp.primesOriginalValue<<" "<<number << " " << primes[i] <<endl;
                   tmp.count++;
-                  // push  
-                  //TODO 이전에 넣었던 수들은 넣지 않는다. hash를 써야 하나?
+                // push
+                    
+                if(!myhash.count(value))
+                {
+                 myhash[value] = value;
                   mq.push(tmp);
+                }
+                
                 }
             }
 
