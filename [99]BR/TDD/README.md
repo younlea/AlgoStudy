@@ -14,7 +14,7 @@ test - unit test
 test_f - 테스트 할 때 초기화 같은 걸 setup으로 한번에 묶어 둠    
 gmock - 가상으로 동작을 만들어 줌    
 
-[approval test](https://github.com/approvals/approvaltests.cpp)
+[approval test](https://github.com/approvals/approvaltests.cpp)    
 golden master testing    
 gmock test    
 code coverage    
