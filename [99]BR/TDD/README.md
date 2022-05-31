@@ -17,7 +17,7 @@ gmock - 가상으로 동작을 만들어 줌
 [approval test](https://github.com/approvals/approvaltests.cpp)    
 golden master testing    
 gmock test    
-code coverage    
+[code coverage](https://gcovr.com/en/stable/)    
 
 ## 실제 활용    
 함수 동작 자동으로 확인    
