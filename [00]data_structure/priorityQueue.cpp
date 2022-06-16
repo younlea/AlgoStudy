@@ -3,7 +3,7 @@ using namespace std;
 
 #define HEAPSIZE 1500
 
-struct qp{
+struct pq{
      int heapCnt = 0;
      int heap[HEAPSIZE] = {0, };
 
@@ -23,13 +23,13 @@ struct qp{
      void push(int data)
      {
           int cur = heapCnt;
-          heap[heapCnt++] = int data;
+          heap[heapCnt++] = data;
           while(cur > 0)
           {
                int parent = (cur -1) / 2;
                if(heap[parent] > heap[cur])
                {
-                    swap(&h[parent], &h[cur]);
+                    myswap(&heap[parent], &heap[cur]);
                }else
                {
                     break;
@@ -48,11 +48,11 @@ struct qp{
           {
                int l = 2*cur +1;
                int r = 2*cur +2;
-               int nxt = heap[l] < heap[r]? l: int front, rear;
+               int nxt = heap[l] < heap[r]? l: r;
 
                if(heap[nxt] < heap [cur])
                {
-                    swap(&heap[nxt], &heap[cur]);
+                    myswap(&heap[nxt], &heap[cur]);
                     cur = nxt;
                }
                else
@@ -63,17 +63,18 @@ struct qp{
 
           return ret;
      }
-}
+};
 
 
 
-void main()
+int main()
 {
-     qb test;
+     pq test;
      for(int i = 100; i > 0; i--)
        test.push(i);
 
      for(int i = 0; i < 100; i++)
           cout << test.pop() << endl;
      
+     return 0;
 }
