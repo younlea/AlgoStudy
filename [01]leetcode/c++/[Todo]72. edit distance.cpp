@@ -1,24 +1,27 @@
-class Solution {
+ class Solution {
 public:
     int minDistance(string word1, string word2) {
-        int ret = 0;
-        string firstWord = word1;
-        string secondWord = word2;
-        //check length and charactor's count
+        int m = word1.size();
+        int n = word2.size();
+        if(m * n == 0) 
+            return m + n;
         
-        int firstWordHash[26] = {0,};
-        int secondWordHash[26] = {0,};
+        int DP[m + 1][n + 1];
+        for(int i = 0; i <= m; i++)
+            DP[i][0] = i;
+        for(int i = 0; i <= n; i++)
+            DP[0][i] = i;
         
-        for(int i = 0; i < word1.size(); i++)
-            firstWordHash[word1[i]-'a']++;
-        for(int i = 0; i < word2.size(); i++)
-            secondWordHash[word2[i]-'a']++;
-        
-        
-        return ret;
-        //make same length
-            // add or remove using charactor' count
-        //replace charactor
-        
+        for(int i = 1; i <= m; i++)
+            for(int j = 1; j <= n; j++)
+            {
+                int top = DP[i - 1][j] + 1;
+                int left = DP[i][j - 1] + 1;
+                int top_left = DP[i-1][j-1];
+                if(word1[i-1] != word2[j-1])
+                    top_left++;
+                DP[i][j] = min(top,min(left,top_left));
+            }
+        return DP[m][n];
     }
 };
