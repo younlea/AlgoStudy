@@ -1,4 +1,4 @@
-# TDD 개요 [BR 교육 자료](https://github.ecodesamsung.com/Best-Reviewer-3-17/SHARED)    
+# TDD 개요 [BR 교육 자료](https://github.com/younlea/company_project/tree/master/BR/docs)    
 
 # Google test    
   [google TEST Git HUB](https://github.com/google/googletest)     
